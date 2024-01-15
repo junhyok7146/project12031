@@ -1,0 +1,308 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600&display=swap');
+
+*{
+    margin: 0; padding: 0;
+    
+    box-sizing: border-box;
+    /*정해진 box의 height의 값을 유지 하겠다는 공식임*/
+
+    font-family: 'Noto Sans KR', sans-serif;
+
+}
+ul{
+    list-style: none;
+}
+a{
+    color: inherit; text-decoration: none;
+}
+img{
+    max-width:100%;
+    vertical-align: middle;
+    /**/
+}
+.cf::after{
+    content: ''; display: block; clear: both;
+}
+.row{
+    max-width: 1289px; border: 0px solid white; margin: 0 auto;
+}
+body{
+    font-family:  "noto sans korea", sans-serif;
+}
+#header{
+    background-color: rgba(0,0,0,0.28);
+    /* background-color: #000; opacity: 0.47; */
+    position: fixed; top: 0; left: 0; width: 100%;
+    z-index: 99; /*박스끼리 겹칠 때 우선 순위를 정하는 속성 숫자가 높을 수록 위에 있음*/
+}
+#header h1{
+    float: left;
+    padding: 20px 0;
+}
+#header #nav{
+    float: right;
+}
+/* #header #nav .depth1{
+    background-color: pink;
+} */
+#header #nav .depth1 > li {
+    float: left; 
+    margin-left: 48px; 
+    color: #fff; 
+    font-family: Noto Sans KR;
+    font-size: 18px;
+    transition: all 0.2s;
+    position: relative;
+    border-top: 4px solid transparent;
+}
+#header #nav .depth1 > li > a {
+    /*a tag는 block 속성이 있어야 높이를 설정 가능하므로 block코드를 넣어줘야함*/
+    /*a하나뿐일 땐 block만 적어도 됨*/
+    display: inline-block;
+    height: 86.3px;
+    line-height: 86.3px;
+}
+#header #nav .depth1 > li:hover {
+    color: #45639d; 
+    border-top: 4px solid #45639d;
+}
+#header #nav .depth1 >li:hover .depth2{
+    display: block;
+    /*depth2의 원래 성격은 block 성격인데 display:block을 써줌으로써 안보이게 되는 것*/
+}
+#header #nav .depth2{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    background-color: #fff;
+    color: #212934;
+    display: none;
+    border-top: 3px solid #45639d;
+}
+#header #nav .depth2 > li > a{
+    padding: 12px 20px;
+    display: block;
+    /*block은 성격이고 inline은 넓이를 줄 수 있는데 넓이가
+     글자만큼만 잡힘 이럴땐 inline-block이 아니라 block을 줘야함*/
+    font-size: 14px;
+    color: #212934;
+}
+#header #nav .depth2 > li > a:hover{
+    background: #f9f9fb;
+}
+#section .slide{
+    /* relative를 적어야 absolute가 적용 가능함 허락한다는 개념 */
+    position: relative;
+    /*자식이 부모를 기준으로 배치될 때 부모한테 주는 속성*/
+}
+#section .slide img{
+    width: 100%
+}
+/* 가장 큰 조상 -> 아버지 -> 아들 이름만 적고 중간은 생략해도 됨 */
+#section .slide .text{
+    /*자식 박스를 부모박스 정중앙에 배치 시키는 공식*/
+    position: absolute;
+        /* absolute는 부모에게 붙는 것 */
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    /*자식 박스를 부모박스 정중앙에 배치 시키는 공식*/
+    
+    width: 100%; /*자식의 글씨 크기가 커서 두줄로 되면 이 속성을 추가함*/
+
+    color: #fff;
+
+    text-align: center;
+
+}
+#section .slide .text h2{
+    font-size: 100px;
+}
+#section .slide .text p{
+    font-size: 22px;
+    margin: 30px 0 80px ;
+
+}
+#section .slide .text a{
+    font-size: 17px;
+    color: #58aedd;
+    background-color: #fff;
+    padding: 15px 35px;
+    
+    border-radius: 50px;
+    /*px은 모서리가 둥글어지고 %는 전체가 둥글어짐*/
+}
+/*슬라이드 구역*/
+#section .SlideOuter .SlideInner{
+    position: relative;
+}
+#section .SlideOuter .SlideInner button.slick-arrow{
+    /*button은 기본 스타일이 백그라운드로 나오기 때문에 클래스 명을 붙여줘야함*/
+    border: none;
+    background: none;
+    font-size: 50px;
+    color: #fff;
+    position: absolute;
+    top:50%;
+    cursor: pointer;
+    /*마우스 커서를 바꿔주는 속성*/
+}
+#section .SlideOuter .SlideInner button.slick-next{
+    right: 50px;
+}
+#section .SlideOuter .SlideInner button.slick-prev{
+    left: 50px;
+    z-index: 999;
+}
+#section .SlideOuter .SlideInner ul.slick-dots{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    /*디폴트 값이 가로축이라서 하나만 쓰면 가로만 -50%*/
+    bottom: 50px   
+}
+#section .SlideOuter .SlideInner ul.slick-dots li{
+    display: inline-block;
+    /*inline 성질을 부여하면 가로로 된 숫자가 세로로 바뀜*/
+    margin: 0 5px;
+}
+#section .SlideOuter .SlideInner ul.slick-dots li button{
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-indent: 9999px;
+    /*문단 첫글자 들여쓰기 음수일땐 왼쪽 양수일땐 오른쪽으로 빠진다.*/
+    overflow: hidden;
+    /*히든을 줘서 꽁꽁 숨겨버림*/
+    background: #fff;
+}
+#section .SlideOuter .SlideInner ul.slick-dots li.slick-active button{
+    /*backgroundcolor디폴트 값이 f0f0f0색을 갖고 태어남*/
+    background: #f00;
+}
+#section .business ul{
+    overflow: hidden;
+}
+#section .business ul li{
+    float: left;
+    width: 25%;
+    text-align: center;
+    height: 600px; /*원래는 높이를 잘 안주는데 글씨 양이 다른데 높이가 같아질 때 사용*/
+    padding: 100px 30px;
+}
+#section .business ul li:nth-child(2),
+#section .business ul li:nth-child(4){
+    background-color: #edf0f4;
+}
+#section .business ul li img{
+    border-bottom: solid 2px #e0dede;
+    padding: 20px 40px;
+    margin-bottom: 50px;
+}
+#section .business ul li h3{
+    font-size: 30px;
+    color: #333;
+    font-family: "noto sans kr";
+}
+#section .business ul li h3 span{
+    display: block;
+    font-weight: 200;
+    margin: 20px 0 40px;
+}
+#section .business ul li a{
+    font-size: 14px;
+    background: #45639d;
+    color: #fff;
+    padding: 13px 29px;
+    border-radius: 6px;
+    border: 2px solid #45639d;
+
+    /*애니메이션 효과 속 움직이는 시간을 설정할 수 있음*/
+    transition: all 0.2s;
+}
+#section .business ul li a:hover {
+    font-size: 14px;
+    background: #fff;
+    color: #45639d;
+}
+#section .product{
+    background: url(../img/product_bg.jpg) no-repeat center / cover;
+    padding: 100px 0;
+}
+#section .product .row{
+    overflow: hidden;
+}
+#section .product .text{
+    float: left;
+    width: 50%;
+    color: #fff;
+}
+#section .product .text h2{
+    font-size: 70px;
+}
+#section .product .text p{
+    font-size: 24px;
+    margin: 30px 0;
+    line-height: 1.5em;
+}
+#section .product .text .btn a{
+    font-size: 14px;
+    padding: 15px 30px;
+    border: 2px solid #fff;
+    display: inline-block;
+    border-radius: 5px;
+}
+#section .product .text .btn a:nth-child(1){ /*굳이 class를 나누지 않고 nth child로 나누면 됨*/
+    background-color: #fff;
+    color: #333;
+    margin-right: 10px;
+}
+#section .product .photo{
+    float: left;
+    width: 50%;
+    text-align: center;
+    padding-top: 70px;
+}
+#section .customer{
+    background: #edf0f4;
+    padding: 50px 0;
+}
+#section .customer .row h2{
+    font-size: 70px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+#section .customer .row div{
+    overflow: hidden;
+}
+#section .customer .row div span{
+    width: 33.33%;
+    float: left;
+    padding: 0 15px;
+
+}
+#section .customer .row div span img{
+    border: 1px solid #ddd;
+}
+#footer .address{
+    background-color: #212934;
+    padding: 30px 30px 34px;
+    font-size: 16px;
+    color: #666;
+}
+#footer .address pre{
+    font-family:  "noto sans korea", sans-serif;
+    line-height: 1.5em;
+    margin: 16px 0;
+}
+#footer .copyright{
+    background-color: #1d242d;
+    padding: 20px 30px;
+    color: #ffffff66;
+    font-size: 13px;
+}
